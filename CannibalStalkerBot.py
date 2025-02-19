@@ -1,5 +1,5 @@
 from telegram import Update, InputMediaPhoto, InputMediaVideo, InputMediaDocument
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
 
 # Función para manejar mensajes que contienen medios
 def handle_media(update: Update, context: CallbackContext):
@@ -32,7 +32,7 @@ def main():
     dp = updater.dispatcher
 
     # Manejador para mensajes que contienen medios
-    dp.add_handler(MessageHandler(Filters.photo | Filters.video | Filters.document, handle_media))
+    dp.add_handler(MessageHandler(filters.photo | filters.video | filters.document, handle_media))
 
     # Inicia el bot
     updater.start_polling()
